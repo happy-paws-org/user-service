@@ -1,0 +1,21 @@
+name: User Service CI
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  ci:
+    uses: happy-paws-org/happy-paws-platform/.github/workflows/python-ci.yaml@develop
+    with:
+      service_name: user-service
+      python_version: "3.11"
+      dockerfile: Dockerfile
+    secrets: inherit
